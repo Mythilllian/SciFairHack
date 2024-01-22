@@ -6,7 +6,11 @@
     <head></head>
     <body>
         <button id="keyButton">Click for the key!</button>
-        <p id="key">I will become key</p>
+        <label for="slideNum" class="text">Slide number:</label>
+        <input type="number" style="width:50px" min="1" max="20" step="1" value="1" id="slideNum">
+        <br>
+        <label for="questionNum" class="text">Question number:</label>
+        <input type="number" style="width:50px" min="1" max="1" step="1" value="1" id="questionNum">
+        <p id="key" class="text"></p>
     </body>
 </html>
-<script type="module" src="popup.js"></script>
