@@ -1,6 +1,6 @@
 {
     "name": "SciFair Hack",
-    "version": "1.0.0",
+    "version": "1.2.0",
     "description": "Grabs answer to questions on SciFair",
     "permissions": ["tabs"],
     "host_permissions": ["https://scifair.vladb.xyz/classes/do/assignment/*"],
