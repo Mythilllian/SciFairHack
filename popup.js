@@ -43,54 +43,15 @@ async function getApi() {
 }
 
 async function getCode() {
-    let artifacts = await getApi();
-    if (artifacts == "Slideshow not found.") {
-        return artifacts;
-    }
-
-    let formattedCode = formatCode(artifacts[slideNum() - 1][questionNum() - 1].code);
-
-    // Integrate the new function
-    let processedResults = await processCodeForPatterns(formattedCode);
-
-    // Format the output to a readable string
-    let output = `Negation Words: ${processedResults.negationWordsString}\nPositive Words: ${processedResults.positiveWordsString}`;
-    return output;
-}
-
-async function processCodeForPatterns(code) {
-    // Replace "/g" with an empty string and remove "/"
-    code = code.replace(/\/g/g, '').replace(/\//g, '');
-
-    var negationPattern = /!\s*d\.(match|includes)\(([^)]+)\)/g;
-    var positivePattern = /d\.(match|includes)\(([^)]+)\)/g;
-
-    function processMatches(matches) {
-        let words = matches.map(match => {
-            // Strip quotes and replace | with " or "
-            return match.replace(/\|/g, ' or ').match(/\(([^)]+)\)/)[1].replace(/['"]/g, '');
+    return getApi()
+        .then(artifacts => {
+            if(artifacts == "Slideshow not found."){return artifacts;}
+            return formatCode(artifacts[slideNum() - 1][questionNum() - 1].code);
+        })
+        .catch(error => {
+            return "Invalid slide or question number.";
         });
-
-        // Remove duplicates
-        return [...new Set(words)];
-    }
-
-    var negationMatches = code.match(negationPattern) || [];
-    var positiveMatches = code.match(positivePattern) || [];
-
-    var negationWords = processMatches(negationMatches);
-    var positiveWords = processMatches(positiveMatches);
-
-    // Remove any words from positiveWords that are in negationWords
-    positiveWords = positiveWords.filter(word => !negationWords.includes(word));
-
-    // Join with commas
-    var negationWordsString = negationWords.join(', ');
-    var positiveWordsString = positiveWords.join(', ');
-
-    return { negationWordsString, positiveWordsString };
 }
-
 
 
 function formatCode(code) {
@@ -169,3 +130,4 @@ window.addEventListener("DOMContentLoaded", (event) => {
         sNum.addEventListener('change', setQuestionMax);
     }
 });
+
