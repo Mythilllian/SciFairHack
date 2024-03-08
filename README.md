@@ -1,5 +1,6 @@
 # SciFairHack V2
 ## A simple Google extension for scraping the answer key from VladB's SciFair Project slideshow site. This may soon be patched.
+### Concerns or suggestions? Tell me them here! https://forms.gle/hu8H6tqVV6AKsi4A6
 
 ### Installation guide:
 1. Click `Code` and then  `Download ZIP`
