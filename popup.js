@@ -84,7 +84,7 @@ function processString(code) {
     }
 
     // Step 8: Search the original string for specific patterns
-    const correctAnswerPattern = /correctAnswers = \[(.*?)\]/;
+    const correctAnswerPattern = /theAnswer = \[(.*?)\]/;
     const incorrectAnswerPattern = /incorrectAnswers = \[(.*?)\]/;
     const foundCorrectAnswers = original.match(correctAnswerPattern);
     const foundIncorrectAnswers = original.match(incorrectAnswerPattern);
